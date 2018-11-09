@@ -24,5 +24,12 @@ namespace YellowMelon.Model
         /// </summary>
         private int u_idx;
         public int User { get => u_idx; set => u_idx = value; }
+
+        /// <summary>
+        /// 재생목록 제목
+        /// </summary>
+        private string lst_title;
+        public string Title { get => lst_title; set => lst_title = value; }
+
     }
 }
