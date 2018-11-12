@@ -8,9 +8,9 @@ namespace YellowMelon.Model
 {
     /// <summary>
     /// 장르 테이블
-    /// Table : Genre_TB
+    /// Table : Genre_RF
     /// </summary>
-    public class Genre
+    public class Genre : IDBModel
     {
         /// <summary>
         /// 인덱스 (pk)

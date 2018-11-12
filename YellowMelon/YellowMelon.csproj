@@ -102,6 +102,8 @@
     <Compile Include="Model\Artist.cs" />
     <Compile Include="Model\IDBModel.cs" />
     <Compile Include="Model\Genre.cs" />
+    <Compile Include="Model\List.cs" />
+    <Compile Include="Model\ListMusic.cs" />
     <Compile Include="Model\Music.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

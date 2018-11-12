@@ -8,6 +8,6 @@ namespace YellowMelon.Model
 {
     public interface IDBModel
     {
-        
+        int Index { get; set; }
     }
 }
