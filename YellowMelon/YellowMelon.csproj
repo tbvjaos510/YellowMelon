@@ -12,7 +12,7 @@
     <DefaultLanguage>ko-KR</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -102,10 +102,26 @@
     <Compile Include="Model\Artist.cs" />
     <Compile Include="Model\IDBModel.cs" />
     <Compile Include="Model\Genre.cs" />
-    <Compile Include="Model\List.cs" />
+    <Compile Include="Model\MList.cs" />
     <Compile Include="Model\ListMusic.cs" />
     <Compile Include="Model\Music.cs" />
+    <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\MusicViewModel.cs" />
+    <Compile Include="ViewModel\PlayListViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
+    <Compile Include="View\LoginController.xaml.cs">
+      <DependentUpon>LoginController.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MusicController.xaml.cs">
+      <DependentUpon>MusicController.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MusicListController.xaml.cs">
+      <DependentUpon>MusicListController.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\PlayListController.xaml.cs">
+      <DependentUpon>PlayListController.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -171,18 +187,46 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="View\LoginController.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MusicController.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MusicListController.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PlayListController.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Dapper">
+      <Version>1.50.5</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.1.7</Version>
+      <Version>6.1.9</Version>
     </PackageReference>
     <PackageReference Include="MySqlConnector">
       <Version>0.47.1</Version>
     </PackageReference>
+    <PackageReference Include="SQLitePCLRaw.bundle_winsqlite3">
+      <Version>1.1.11</Version>
+    </PackageReference>
+    <PackageReference Include="System.Data.SQLite">
+      <Version>1.0.109.2</Version>
+    </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="ViewModel\" />
-    <Folder Include="View\" />
+    <ProjectReference Include="..\DataAccessLibrar\DataAccessLibrary.csproj">
+      <Project>{1ed16fa9-cdb4-4f6c-bf95-04b38c835c8e}</Project>
+      <Name>DataAccessLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

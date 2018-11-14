@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,8 @@ namespace YellowMelon.Model
         /// </summary>
         private string mus_name;
         public string Name { get => mus_name; set => mus_name = value; }
-        
+
+
         /// <summary>
         /// 장르 아이디
         /// Foreign Key Genre
@@ -48,6 +50,14 @@ namespace YellowMelon.Model
         /// 노래 공개 여부
         /// </summary>
         private bool mus_is_open;
+
+
         public bool IsOpen { get => mus_is_open; set => mus_is_open = value; }
+
+
+        // FK 설정
+        public Artist FKArtist { get; set; }
+        public Genre FKGenre { get; set; }
+
     }
 }

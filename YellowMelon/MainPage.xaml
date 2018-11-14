@@ -3,12 +3,28 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:YellowMelon"
+    xmlns:View="using:YellowMelon.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <Grid>
-
+        <View:LoginController x:Name="ctrlLogin" LoginEnd="LoginController_LoginEnd" Visibility="Collapsed"/>
+        
+        <Grid x:Name="grMain">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".15*"/>
+                <RowDefinition Height=".8*"/>
+            </Grid.RowDefinitions>
+            <View:MusicController Grid.Row="0" x:Name="ctrlMusic"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width=".8*"/>
+                    <ColumnDefinition Width=".3*"/>
+                </Grid.ColumnDefinitions>
+                <View:MusicListController x:Name="ctrlMusicList" Grid.Column="0"/>
+                <View:PlayListController x:Name="ctrlPlayList" Grid.Column="1"/>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

@@ -1,0 +1,60 @@
+﻿<UserControl
+    x:Class="YellowMelon.View.MusicListController"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:YellowMelon.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+
+    <Grid>
+        <ListView x:Name="lvMusicList" VerticalAlignment="Top" >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                    <Setter Property="Height" Value="25"/>
+                    <Setter Property="MinHeight" Value="25" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".1*"/>
+                            <ColumnDefinition Width=".4*"/>
+                            <ColumnDefinition Width=".2*"/>
+                            <ColumnDefinition Width=".2*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="순위" Grid.Column="0" HorizontalAlignment="Center"/>
+                        <TextBlock Text="곡명" Grid.Column="1" HorizontalAlignment="Center" />
+                        <TextBlock Text="아티스트" Grid.Column="2" HorizontalAlignment="Center" />
+                        <TextBlock Text="좋아요" Grid.Column="3" HorizontalAlignment="Center" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Grid.Row="1" Height="15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".1*"/>
+                            <ColumnDefinition Width=".4*"/>
+                            <ColumnDefinition Width=".2*"/>
+                            <ColumnDefinition Width=".2*"/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox />
+                        <TextBlock Text="{Binding Index}" Grid.Column="0" 
+                                   HorizontalAlignment="Center" FontSize="12"/>
+                        <TextBlock Text="{Binding Name}" Grid.Column="1" 
+                                   HorizontalAlignment="Center"  FontSize="12"/>
+                        <TextBlock Text="{Binding FKArtist.NickName}" Grid.Column="2" 
+                                   HorizontalAlignment="Center" FontSize="12"/>
+                        <TextBlock Text="{Binding Like}" HorizontalAlignment="Center" Grid.Column="3"  FontSize="12" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>

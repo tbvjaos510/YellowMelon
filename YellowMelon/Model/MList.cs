@@ -11,7 +11,7 @@ namespace YellowMelon.Model
     /// 재생목록 테이블
     /// Table : List_TB
     /// </summary>
-    public class List : IDBModel
+    public class MList : IDBModel
     {
         /// <summary>
         /// 인덱스

@@ -1,0 +1,38 @@
+﻿<UserControl
+    x:Class="YellowMelon.View.PlayListController"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:YellowMelon.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="400"
+    d:DesignWidth="100">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock Height="30" VerticalAlignment="Top" Text="재생 목록" 
+                       FontFamily="Segoe UI" FontSize="15"/>
+            <ListView x:Name="lvPlayList" FontFamily="Segoe UI">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Height" Value="20" />
+                        <Setter Property="MinHeight" Value="20" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".2*"/>
+                                <ColumnDefinition Width=".8*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Index}"/>
+                            <TextBlock Text="{Binding Name}" Grid.Column="1" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</UserControl>
