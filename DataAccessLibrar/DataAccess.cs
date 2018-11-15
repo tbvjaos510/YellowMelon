@@ -64,7 +64,6 @@ namespace DataAccessLibrary
                     "(3, 503, 'G-DRAGON', 'GDragon!!!', '2009-08-01')");
             } catch (Exception) { }
         }
-
         public static void InitMusic()
         {
             try
@@ -96,6 +95,13 @@ namespace DataAccessLibrary
 
             }
             catch (Exception) { }
+        }
+        public static void InsertTrigger()
+        {
+            execute("create trigger if not exists automusiclist after insert on user_tb\n" +
+                "begin\n" +
+                "insert into list_tb (u_idx, lst_title) values (NEW.u_idx, 'DEFAULT');\n" +
+                "end;");
         }
 
         public static void InitializeDatabase()
@@ -152,6 +158,7 @@ namespace DataAccessLibrary
             executeQuery(Create_music_tb);
             executeQuery(Create_list_tb);
             executeQuery(Create_listmusic_tb);
+            InsertTrigger();
 
             InitGenre();
             InitUser();

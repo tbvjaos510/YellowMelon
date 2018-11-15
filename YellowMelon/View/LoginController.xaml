@@ -16,55 +16,50 @@
                    VerticalAlignment="Center" FontFamily="NanumBarunGothic" FontSize="24"/>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".4*"/>
+                <ColumnDefinition Width=".5*"/>
                 <ColumnDefinition />
-                <ColumnDefinition Width=".4*"/>
+                <ColumnDefinition Width=".5*"/>
             </Grid.ColumnDefinitions>
-            <ListView Grid.Column="1" Margin="40">
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        <Setter Property="Background" Value="Transparent" />
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="ListViewItem">
-                                    <ContentPresenter />
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width=".4*"/>
                         <ColumnDefinition Width=".7*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="아이디" VerticalAlignment="Center" FontSize="12"/>
-                    <TextBox x:Name="txtId" TabIndex="-4" Text="{Binding txId, Mode=TwoWay}" Grid.Column="1" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtId" Text="{Binding txId, Mode=TwoWay}" Grid.Column="1" VerticalAlignment="Center"/>
                 </Grid>
-                <Grid>
+                <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width=".4*"/>
                         <ColumnDefinition Width=".7*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="비밀번호" VerticalAlignment="Center" FontSize="12"/>
-                    <PasswordBox x:Name="txtPw" TabIndex="-3" Password="{Binding txPw, Mode=TwoWay}" Grid.Column="1"  VerticalAlignment="Center"/>
+                    <PasswordBox x:Name="txtPw" Password="{Binding txPw, Mode=TwoWay}" Grid.Column="1"  VerticalAlignment="Center"/>
                 </Grid>
-                <Grid x:Name="NameGrid">
+                <Grid Grid.Row="3" x:Name="NameGrid">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width=".4*"/>
                         <ColumnDefinition Width=".7*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Text="이름" VerticalAlignment="Center" FontSize="12"/>
-                    <TextBox x:Name="txtName" TabIndex="-2" Grid.Column="1" Text="{Binding txName, Mode=TwoWay}"  VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtName" Grid.Column="1" Text="{Binding txName, Mode=TwoWay}"  VerticalAlignment="Center"/>
                 </Grid>
 
-                <Grid>
-                    
-                    <Button x:Name="btnSignup" HorizontalAlignment="Left" Content="회원가입" Click="btnSignup_Click"/>
-                    <Button x:Name="btnLogin" TabIndex="-1" HorizontalAlignment="Right" Content="로그인" Click="btnLogin_Click"/>
-                </Grid>
-            </ListView>
+                <Grid Grid.Row="4">
+
+                <Button x:Name="btnSignup" HorizontalAlignment="Left" Content="회원가입" Click="btnSignup_Click"/>
+                <Button x:Name="btnLogin" HorizontalAlignment="Right" Content="로그인" Click="btnLogin_Click"/>
+            </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

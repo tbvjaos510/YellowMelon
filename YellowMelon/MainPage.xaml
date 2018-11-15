@@ -9,9 +9,9 @@
     mc:Ignorable="d">
 
     <Grid>
-        <View:LoginController x:Name="ctrlLogin" LoginEnd="LoginController_LoginEnd" Visibility="Collapsed"/>
-        
-        <Grid x:Name="grMain">
+        <View:LoginController x:Name="ctrlLogin" LoginEnd="LoginController_LoginEnd"/>
+
+        <Grid x:Name="grMain" Visibility="Collapsed">
             <Grid.RowDefinitions>
                 <RowDefinition Height=".15*"/>
                 <RowDefinition Height=".8*"/>
@@ -22,7 +22,7 @@
                     <ColumnDefinition Width=".8*"/>
                     <ColumnDefinition Width=".3*"/>
                 </Grid.ColumnDefinitions>
-                <View:MusicListController x:Name="ctrlMusicList" Grid.Column="0"/>
+                <View:MusicListController x:Name="ctrlMusicList" Grid.Column="0" AddMusicPlayList="CtrlMusicList_AddMusicPlayList"/>
                 <View:PlayListController x:Name="ctrlPlayList" Grid.Column="1"/>
             </Grid>
         </Grid>

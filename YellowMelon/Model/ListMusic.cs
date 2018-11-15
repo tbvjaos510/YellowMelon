@@ -31,5 +31,9 @@ namespace YellowMelon.Model
         private int lsm_pos;
         public int Pos { get => lsm_pos; set => lsm_pos = value; }
 
+        /// <summary>
+        /// FK Music
+        /// </summary>
+        public Music FK_Music { get; set; }
     }
 }

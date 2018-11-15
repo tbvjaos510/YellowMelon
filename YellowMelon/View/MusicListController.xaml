@@ -10,7 +10,7 @@
     d:DesignWidth="400">
 
     <Grid>
-        <ListView x:Name="lvMusicList" VerticalAlignment="Top" >
+        <ListView x:Name="lvMusicList" VerticalAlignment="Top" DoubleTapped="LvMusicList_DoubleTapped" CanDragItems="True">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />

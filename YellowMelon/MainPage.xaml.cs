@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -35,6 +36,12 @@ namespace YellowMelon
             ctrlLogin.Visibility = Visibility.Collapsed;
             grMain.Visibility = Visibility.Visible;
             ctrlPlayList.InitPlayList(sender as User);
+        }
+
+        private async void CtrlMusicList_AddMusicPlayList(object sender, object e)
+        {
+            Music addMusic = e as Music;
+            ctrlPlayList.AddMusic(addMusic);
         }
     }
 }
