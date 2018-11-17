@@ -74,7 +74,5 @@ namespace YellowMelon.ViewModel
             }
         }
 
-        private List<ListMusic> sort() => playList.PlayList.OrderBy(e => e.Pos).ToList();
-        
     }
 }

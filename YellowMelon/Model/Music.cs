@@ -54,6 +54,12 @@ namespace YellowMelon.Model
 
         public bool IsOpen { get => mus_is_open; set => mus_is_open = value; }
 
+        /// <summary>
+        /// 노래 링크 (Youtube)
+        /// </summary>
+        private string mus_link;
+
+        public string Link { get => mus_link; set => mus_link = value; }
 
         // FK 설정
         public Artist FKArtist { get; set; }

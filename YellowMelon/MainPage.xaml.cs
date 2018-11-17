@@ -38,10 +38,20 @@ namespace YellowMelon
             ctrlPlayList.InitPlayList(sender as User);
         }
 
-        private async void CtrlMusicList_AddMusicPlayList(object sender, object e)
+        private void CtrlMusicList_AddMusicPlayList(object sender, object e)
         {
             Music addMusic = e as Music;
             ctrlPlayList.AddMusic(addMusic);
+        }
+
+        private void CtrlMusic_requestNext(object sender, EventArgs e)
+        {
+            ctrlMusic.PlayMusic(ctrlPlayList.GetMusic());
+        }
+
+        private void CtrlPlayList_requestMusic(object sender, object e)
+        {
+            ctrlMusic.PlayMusic(e as Music);
         }
     }
 }

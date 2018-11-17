@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,8 +11,10 @@ namespace YellowMelon.Model
     /// 재생목록의 음악
     /// Table : ListMusic_TB
     /// </summary>
-    public class ListMusic : IDBModel
+    public class ListMusic : IDBModel, INotifyPropertyChanged
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+
         /// <summary>
         /// 인덱스
         /// </summary>
@@ -29,11 +32,25 @@ namespace YellowMelon.Model
         /// 재생목록 순위
         /// </summary>
         private int lsm_pos;
-        public int Pos { get => lsm_pos; set => lsm_pos = value; }
+
+
+        public int Pos
+        {
+            get => lsm_pos; set
+            {
+                lsm_pos = value;
+                OnPropertyChanged(nameof(Pos));
+            }
+        }
 
         /// <summary>
         /// FK Music
         /// </summary>
         public Music FK_Music { get; set; }
+
+        public void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

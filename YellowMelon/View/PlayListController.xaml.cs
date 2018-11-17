@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,8 +24,11 @@ namespace YellowMelon.View
 {
     public sealed partial class PlayListController : UserControl
     {
+        public event EventHandler <Music>requestMusic;
         PlayListViewModel playListViewModel;
         User currentUser;
+        int currentMusic = 0;
+        ListMusic selected;
         public PlayListController()
         {
             this.InitializeComponent();
@@ -35,6 +39,7 @@ namespace YellowMelon.View
             currentUser = user;
             playListViewModel = new PlayListViewModel(user);
             lvPlayList.ItemsSource = playListViewModel.playList.PlayList;
+            cbPlayLists.ItemsSource = playListViewModel.PlayLists;
         }
 
         internal void AddMusic(Music music)
@@ -49,7 +54,34 @@ namespace YellowMelon.View
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine(sender);
+            int idx = playListViewModel.playList.PlayList.IndexOf(selected);
+            playListViewModel.RemoveMusic(idx);
+        }
+
+        private void LvPlayList_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            ListView list = sender as ListView;
+            playlistMenuFly.ShowAt(list, e.GetPosition(list));
+            selected = ((FrameworkElement)e.OriginalSource).DataContext as ListMusic;
+        }
+
+        internal Music GetMusic()
+        {
+            if (playListViewModel.playList.PlayList.Count == 0)
+            {
+                new MessageDialog("재생목록에 곡을 넣어주세요").ShowAsync().AsTask();
+                return null;
+            }
+            if (playListViewModel.playList.PlayList.Count <= currentMusic)
+                currentMusic = 0;
+            lvPlayList.SelectedIndex = currentMusic;
+            return playListViewModel.playList.PlayList[currentMusic++].FK_Music;
+        }
+
+        private void LvPlayList_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            currentMusic = lvPlayList.SelectedIndex;
+            requestMusic(this, playListViewModel.playList.PlayList[currentMusic++].FK_Music);
         }
     }
 }

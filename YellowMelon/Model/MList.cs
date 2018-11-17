@@ -38,5 +38,9 @@ namespace YellowMelon.Model
         private ObservableCollection<ListMusic> playList;
         public ObservableCollection<ListMusic> PlayList { get => playList; set => playList = value; }
 
+        public override string ToString()
+        {
+            return this.lst_title;
+        }
     }
 }

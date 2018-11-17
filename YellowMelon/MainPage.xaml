@@ -5,6 +5,7 @@
     xmlns:local="using:YellowMelon"
     xmlns:View="using:YellowMelon.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
@@ -13,17 +14,20 @@
 
         <Grid x:Name="grMain" Visibility="Collapsed">
             <Grid.RowDefinitions>
-                <RowDefinition Height=".15*"/>
-                <RowDefinition Height=".8*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <View:MusicController Grid.Row="0" x:Name="ctrlMusic"/>
+            <View:MusicController Grid.Row="0" x:Name="ctrlMusic" requestNext="CtrlMusic_requestNext"/>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width=".8*"/>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width=".3*"/>
                 </Grid.ColumnDefinitions>
                 <View:MusicListController x:Name="ctrlMusicList" Grid.Column="0" AddMusicPlayList="CtrlMusicList_AddMusicPlayList"/>
-                <View:PlayListController x:Name="ctrlPlayList" Grid.Column="1"/>
+                <controls:GridSplitter Grid.Column="1" Width="5" MinWidth="5" ResizeBehavior="BasedOnAlignment"/>
+                <View:PlayListController x:Name="ctrlPlayList" Grid.Column="2"
+                                         requestMusic="CtrlPlayList_requestMusic"/>
             </Grid>
         </Grid>
     </Grid>
