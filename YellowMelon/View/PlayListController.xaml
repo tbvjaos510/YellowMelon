@@ -16,8 +16,11 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <TextBlock Height="30" VerticalAlignment="Top" Text="재생 목록" 
-                       FontFamily="Segoe UI" FontSize="15"/>
+            <TextBlock VerticalAlignment="Center" Text="재생 목록" Margin="15 0 0 0" FontFamily="Segoe UI" FontSize="15"/>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal"  Margin="0 0 15 0">
+                <Button x:Name="btnAddList" Content="추가" Margin="0 0 10 0" Click="BtnAddList_Click" />
+                <Button x:Name="btnDelList" Content="삭제" Click="BtnDelList_Click" />
+            </StackPanel>
             <ListView x:Name="lvPlayList" FontFamily="Segoe UI" AllowDrop="True" Grid.Row="1"
                       RightTapped="LvPlayList_RightTapped" DoubleTapped="LvPlayList_DoubleTapped">
                 <ListView.ItemContainerStyle>
@@ -57,7 +60,7 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <TextBlock Text="현재 목록" VerticalAlignment="Center" FontSize="12"/>
-                    <ComboBox x:Name="cbPlayLists"/>
+                    <ComboBox x:Name="cbPlayLists" SelectionChanged="CbPlayLists_SelectionChanged"/>
                 </StackPanel>
             </Grid>
         </Grid>

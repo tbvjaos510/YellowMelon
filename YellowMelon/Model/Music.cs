@@ -11,7 +11,7 @@ namespace YellowMelon.Model
     /// 음악 테이블
     /// Table : Music_TB
     /// </summary>
-    public class Music : IDBModel
+    public class Music : IDBModel, INotifyPropertyChanged
     {
         /// <summary>
         /// 인덱스
@@ -44,7 +44,10 @@ namespace YellowMelon.Model
         /// 음악 좋아요 수
         /// </summary>
         private int mus_like;
-        public int Like { get => mus_like; set => mus_like = value; }
+        public int Like { get => mus_like; set {
+                mus_like = value;
+                OnPropertyChanged(nameof(Like));
+            } }
 
         /// <summary>
         /// 노래 공개 여부
@@ -58,6 +61,13 @@ namespace YellowMelon.Model
         /// 노래 링크 (Youtube)
         /// </summary>
         private string mus_link;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
         public string Link { get => mus_link; set => mus_link = value; }
 

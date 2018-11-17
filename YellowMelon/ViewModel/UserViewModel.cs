@@ -28,5 +28,9 @@ namespace YellowMelon.ViewModel
                 return false;
             }
         }
+        public Artist CheckArtist(int id)
+        {
+            return DataAccess.db.Query<Artist>("select * from artist_tb where u_idx=@id", new { id }).FirstOrDefault();
+        }
     }
 }

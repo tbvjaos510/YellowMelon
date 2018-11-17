@@ -107,7 +107,7 @@ namespace DataAccessLibrary
         public static void InitializeDatabase()
         {
             db.Open();
-         //   dropAllTable();
+            // dropAllTable();
             string Create_user_tb = "create table if not exists user_tb (" +
                 "u_idx INTEGER primary key AUTOINCREMENT," +
                 "u_id varchar(45) not null unique," +

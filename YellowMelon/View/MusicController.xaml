@@ -31,7 +31,7 @@
                         <ColumnDefinition Width=".2*"/>
                     </Grid.ColumnDefinitions>
                     <MediaPlayerElement x:Name="youtubePlayer" AreTransportControlsEnabled="True" Grid.ColumnSpan="3" 
-                                        Visibility="Collapsed"/>
+                                        Visibility="Collapsed" />
                     <MediaTransportControls x:Name="playerContoller" Grid.ColumnSpan="3" ShowAndHideAutomatically="False"
                                             IsSeekEnabled="True" IsSeekBarVisible="True"
                                             Height="95" Margin="30 0"/>
@@ -63,7 +63,7 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="2" Margin="5 8" Background="White">
+                    <Button x:Name="btnPrev" Grid.Column="2" Margin="5 8" Background="White" Click="BtnPrev_Click">
                         <Button.Resources>
                             <ResourceDictionary>
                                 <ResourceDictionary.ThemeDictionaries>

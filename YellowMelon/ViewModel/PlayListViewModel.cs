@@ -7,18 +7,24 @@ using DataAccessLibrary;
 using Dapper;
 using System.Collections.ObjectModel;
 using YellowMelon.Model;
+using System.ComponentModel;
 
 namespace YellowMelon.ViewModel
 {
     public class PlayListViewModel
     {
         public ObservableCollection<MList> PlayLists;
-        public int currentIdx = 0;
-        public MList playList { get => PlayLists[currentIdx]; }
+        public int CurrentIdx = 0;
+        
+        private User currentUser = null;
+
+        public MList playList { get => CurrentIdx > -1 ? PlayLists[CurrentIdx] : PlayLists[0]; }
 
 
         public PlayListViewModel(User user)
         {
+            CurrentIdx = 0;
+            currentUser = user;
             InitMusicList(user.Index);
         }
 
@@ -66,7 +72,7 @@ namespace YellowMelon.ViewModel
             DataAccess.execute("update listmusic_tb set lsm_pos = lsm_pos - 1 " +
                 "where lst_idx = " + playList.Index
                 + " and lsm_pos > " + idx);
-            playList.PlayList.RemoveAt(idx);
+            playList.PlayList.RemoveAt(idx-1);
             foreach (ListMusic listMusic in playList.PlayList)
             {
                 if (listMusic.Pos > idx)
@@ -74,5 +80,25 @@ namespace YellowMelon.ViewModel
             }
         }
 
+        public void AddPlayList(string name)
+        {
+            int id = DataAccess.executeQuery("insert into list_tb (u_idx, lst_title) values (" + currentUser.Index + ", '" + name + "');" +
+                "select last_insert_rowid();").GetInt32(0);
+            PlayLists.Add(new MList()
+            {
+                Index = id,
+                PlayList = new ObservableCollection<ListMusic>(),
+                Title = name,
+                User = currentUser.Index
+            });
+            CurrentIdx = PlayLists.Count-1;
+        }
+
+        public void RemovePlayList()
+        {
+            DataAccess.executeQuery("delete from list_tb where lst_idx = " + playList.Index);
+            CurrentIdx--;
+            PlayLists.Remove(PlayLists[CurrentIdx+1]);
+        }
     }
 }

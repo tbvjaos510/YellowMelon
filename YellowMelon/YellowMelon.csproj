@@ -107,6 +107,7 @@
     <Compile Include="Model\Music.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\ArtistViewModel.cs" />
     <Compile Include="ViewModel\MusicViewModel.cs" />
     <Compile Include="ViewModel\PlayerViewModel.cs" />
     <Compile Include="ViewModel\PlayListViewModel.cs" />
@@ -120,8 +121,14 @@
     <Compile Include="View\MusicListController.xaml.cs">
       <DependentUpon>MusicListController.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ArtistViewController.xaml.cs">
+      <DependentUpon>ArtistViewController.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\PlayListController.xaml.cs">
       <DependentUpon>PlayListController.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserInfoController.xaml.cs">
+      <DependentUpon>UserInfoController.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -200,7 +207,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ArtistViewController.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\PlayListController.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserInfoController.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

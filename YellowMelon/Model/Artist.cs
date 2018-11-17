@@ -42,5 +42,10 @@ namespace YellowMelon.Model
         /// </summary>
         private string art_exp;
         public string Explain { get => art_exp; set => art_exp = value; }
+        
+        /// <summary>
+        /// 사용자 Foreign key
+        /// </summary>
+        public User FK_User { get; set; }
     }
 }

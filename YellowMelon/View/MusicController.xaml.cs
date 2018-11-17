@@ -26,6 +26,7 @@ namespace YellowMelon.View
     {
         MediaPlayer mediaPlayer = new MediaPlayer();
         public event EventHandler requestNext;
+        public event EventHandler requestPrev;
         private DispatcherTimer timer = new DispatcherTimer();
         Music music = null;
         PlayerViewModel playerViewModel = new PlayerViewModel();
@@ -61,6 +62,7 @@ namespace YellowMelon.View
             {
                 timer?.Stop();
                 requestNext(this, null);
+                Music_Pause();
             });
         }
 
@@ -94,12 +96,12 @@ namespace YellowMelon.View
                 }
                 Music_Play();
             }
-            isPlayed = !isPlayed;
         }
         private void Music_Play()
         {
             PauseBtn.Visibility = Visibility.Visible;
             PlayBtn.Visibility = Visibility.Collapsed;
+            isPlayed = true;
             mediaPlayer.Play();
         }
         private void Music_Pause()
@@ -107,6 +109,7 @@ namespace YellowMelon.View
 
             PlayBtn.Visibility = Visibility.Visible;
             PauseBtn.Visibility = Visibility.Collapsed;
+            isPlayed = false;
             mediaPlayer.Pause();
         }
         internal void PlayMusic(Music music)
@@ -172,5 +175,15 @@ namespace YellowMelon.View
             requestNext(this, null);
         }
 
+        private void BtnPrev_Click(object sender, RoutedEventArgs e)
+        {
+            if (mediaPlayer.PlaybackSession.Position.TotalSeconds > 5)
+            {
+                mediaPlayer.PlaybackSession.Position = new TimeSpan(0, 0, 0);
+            } else
+            {
+                requestPrev(this, null);
+            }
+        }
     }
 }

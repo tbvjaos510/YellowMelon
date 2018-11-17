@@ -10,51 +10,60 @@
     d:DesignWidth="400">
 
     <Grid>
-        <ListView x:Name="lvMusicList" VerticalAlignment="Top" DoubleTapped="LvMusicList_DoubleTapped" CanDragItems="True">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
-                    <Setter Property="Height" Value="25"/>
-                    <Setter Property="MinHeight" Value="25" />
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.HeaderTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".1*"/>
-                            <ColumnDefinition Width=".4*"/>
-                            <ColumnDefinition Width=".2*"/>
-                            <ColumnDefinition Width=".2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Text="순위" Grid.Column="0" HorizontalAlignment="Center"/>
-                        <TextBlock Text="곡명" Grid.Column="1" HorizontalAlignment="Center" />
-                        <TextBlock Text="아티스트" Grid.Column="2" HorizontalAlignment="Center" />
-                        <TextBlock Text="좋아요" Grid.Column="3" HorizontalAlignment="Center" />
-                    </Grid>
-                </DataTemplate>
-            </ListView.HeaderTemplate>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid Grid.Row="1" Height="15">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width=".1*"/>
-                            <ColumnDefinition Width=".4*"/>
-                            <ColumnDefinition Width=".2*"/>
-                            <ColumnDefinition Width=".2*"/>
-                        </Grid.ColumnDefinitions>
-                        <CheckBox />
-                        <TextBlock Text="{Binding Index}" Grid.Column="0" 
+        <local:ArtistViewController Visibility="Collapsed" x:Name="ctrlArtistView" Close="CtrlArtist_Close"/>
+        <ListView x:Name="lvMusicList" VerticalAlignment="Top" DoubleTapped="LvMusicList_DoubleTapped" 
+                  RightTapped="LvMusicList_RightTapped">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                        <Setter Property="Height" Value="25"/>
+                        <Setter Property="MinHeight" Value="25" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".1*"/>
+                                <ColumnDefinition Width=".4*"/>
+                                <ColumnDefinition Width=".2*"/>
+                                <ColumnDefinition Width=".2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="곡번호" Grid.Column="0" HorizontalAlignment="Center"/>
+                            <TextBlock Text="곡명" Grid.Column="1" HorizontalAlignment="Center" />
+                            <TextBlock Text="아티스트" Grid.Column="2" HorizontalAlignment="Center" />
+                            <TextBlock Text="좋아요" Grid.Column="3" HorizontalAlignment="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Grid.Row="1" Height="15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width=".1*"/>
+                                <ColumnDefinition Width=".4*"/>
+                                <ColumnDefinition Width=".2*"/>
+                                <ColumnDefinition Width=".2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Index}" Grid.Column="0" 
                                    HorizontalAlignment="Center" FontSize="12"/>
-                        <TextBlock Text="{Binding Name}" Grid.Column="1" 
-                                   HorizontalAlignment="Center"  FontSize="12"/>
-                        <TextBlock Text="{Binding FKArtist.NickName}" Grid.Column="2" 
+                            <TextBlock Text="{Binding Name}" Grid.Column="1" 
+                                   HorizontalAlignment="Center"  FontSize="12" Tapped="TextBlock_Tapped"/>
+                            <TextBlock Text="{Binding FKArtist.NickName}" Grid.Column="2" 
                                    HorizontalAlignment="Center" FontSize="12"/>
-                        <TextBlock Text="{Binding Like}" HorizontalAlignment="Center" Grid.Column="3"  FontSize="12" />
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                            <TextBlock Text="{Binding Like}" HorizontalAlignment="Center" Grid.Column="3"  FontSize="12" />
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Resources>
+                    <MenuFlyout x:Name="playlistMenuFly">
+                        <MenuFlyout.Items>
+                            <MenuFlyoutItem x:Name="ShowArtist" Text="아티스트 보기" Click="ShowArtist_Click"/>
+                        <MenuFlyoutItem x:Name="LikeMusic" Text="곡 좋아요" Click="LikeMusic_Click" />
+                    </MenuFlyout.Items>
+                    </MenuFlyout>
+                </ListView.Resources>
+            </ListView>
     </Grid>
 </UserControl>

@@ -28,6 +28,7 @@ namespace YellowMelon
         public MainPage()
         {
             this.InitializeComponent();
+            ctrlMusicList.InitData();
             ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(700, 500));
         }
 
@@ -35,6 +36,7 @@ namespace YellowMelon
         {
             ctrlLogin.Visibility = Visibility.Collapsed;
             grMain.Visibility = Visibility.Visible;
+            ctrlUser.InitData(sender as User);
             ctrlPlayList.InitPlayList(sender as User);
         }
 
@@ -52,6 +54,11 @@ namespace YellowMelon
         private void CtrlPlayList_requestMusic(object sender, object e)
         {
             ctrlMusic.PlayMusic(e as Music);
+        }
+
+        private void CtrlMusic_requestPrev(object sender, EventArgs e)
+        {
+            ctrlMusic.PlayMusic(ctrlPlayList.GetMusicPrev());
         }
     }
 }

@@ -23,16 +23,20 @@ namespace YellowMelon.View
     public sealed partial class MusicListController : UserControl
     {
         public event EventHandler<Music> AddMusicPlayList;
-        private MusicViewModel musicViewModel = new MusicViewModel();
+        private MusicViewModel musicViewModel;
+        private Music selected;
         public MusicListController()
         {
             this.InitializeComponent();
-
-            InitData();
         }
 
-        private void InitData()
+        internal void setData(List<Music> musics)
         {
+            lvMusicList.ItemsSource = musics;
+        }
+        internal void InitData()
+        {
+            musicViewModel = new MusicViewModel();
             lvMusicList.ItemsSource = musicViewModel.musics;
         }
 
@@ -42,5 +46,35 @@ namespace YellowMelon.View
             AddMusicPlayList(this, clicked);
         }
 
+        
+        private void CtrlArtist_Close(object sender, EventArgs e)
+        {
+            lvMusicList.Visibility = Visibility.Visible;
+            ctrlArtistView.Visibility = Visibility.Collapsed;
+        }
+
+        private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            Debug.WriteLine("Clicked!!!!!");
+        }
+
+        private void LvMusicList_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            ListView list = sender as ListView;
+            playlistMenuFly.ShowAt(list, e.GetPosition(list));
+            selected = ((FrameworkElement)e.OriginalSource).DataContext as Music;
+        }
+
+        private void ShowArtist_Click(object sender, RoutedEventArgs e)
+        {
+            ctrlArtistView.InitData(selected.FKArtist.Index);
+            lvMusicList.Visibility = Visibility.Collapsed;
+            ctrlArtistView.Visibility = Visibility.Visible;
+        }
+
+        private void LikeMusic_Click(object sender, RoutedEventArgs e)
+        {
+            musicViewModel.LikeMusic(musicViewModel.musics.IndexOf(selected));
+        }
     }
 }

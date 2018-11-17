@@ -27,5 +27,10 @@ namespace YellowMelon.ViewModel
             }, splitOn: "art_idx,gn_idx").ToList());
 
         }
+        public void LikeMusic(int idx)
+        {
+            DataAccess.executeQuery("update music_tb set mus_like = mus_like + 1 where mus_idx = " + musics[idx].Index);
+            musics[idx].Like++;
+        }
     }
 }
