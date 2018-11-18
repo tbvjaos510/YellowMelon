@@ -60,5 +60,10 @@ namespace YellowMelon
         {
             ctrlMusic.PlayMusic(ctrlPlayList.GetMusicPrev());
         }
+
+        private void CtrlUser_MusicAdded(object sender, EventArgs e)
+        {
+            ctrlMusicList.InitData();
+        }
     }
 }

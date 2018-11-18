@@ -32,5 +32,10 @@ namespace YellowMelon.ViewModel
         {
             return DataAccess.db.Query<Artist>("select * from artist_tb where u_idx=@id", new { id }).FirstOrDefault();
         }
+
+        public void AddArtist(Artist artist)
+        {
+            DataAccess.db.Execute("insert into artist_tb (u_idx, art_nick, art_exp) values (@User, @NickName, @Explain)", artist);
+        }
     }
 }

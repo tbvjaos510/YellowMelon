@@ -115,6 +115,12 @@
     <Compile Include="View\LoginController.xaml.cs">
       <DependentUpon>LoginController.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ArtistAddDialog.xaml.cs">
+      <DependentUpon>ArtistAddDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MusicAddDialog.xaml.cs">
+      <DependentUpon>MusicAddDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MusicController.xaml.cs">
       <DependentUpon>MusicController.xaml</DependentUpon>
     </Compile>
@@ -196,6 +202,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\LoginController.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ArtistAddDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\MusicAddDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

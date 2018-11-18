@@ -23,5 +23,10 @@ namespace YellowMelon.Model
         /// </summary>
         private string gn_name;
         public string Name { get => gn_name; set => gn_name = value; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

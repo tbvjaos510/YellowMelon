@@ -53,11 +53,6 @@ namespace YellowMelon.View
             ctrlArtistView.Visibility = Visibility.Collapsed;
         }
 
-        private void TextBlock_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            Debug.WriteLine("Clicked!!!!!");
-        }
-
         private void LvMusicList_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
             ListView list = sender as ListView;

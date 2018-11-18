@@ -27,10 +27,30 @@ namespace YellowMelon.ViewModel
             }, splitOn: "art_idx,gn_idx").ToList());
 
         }
+        public MusicViewModel(int i)
+        {
+
+        }
         public void LikeMusic(int idx)
         {
             DataAccess.executeQuery("update music_tb set mus_like = mus_like + 1 where mus_idx = " + musics[idx].Index);
             musics[idx].Like++;
+        }
+
+        public void AddMusic(Music music)
+        {
+            /*
+                    "mus_idx INTEGER primary key AUTOINCREMENT," +
+                "mus_name text not null," +
+                "gn_idx int not null," +
+                "art_idx int not null," +
+                "mus_exp text," +
+                "mus_like int not null default 0," +
+                "mus_is_open int not null," +
+                "mus_link text not null," +
+             */
+            DataAccess.db.Execute("insert into music_tb (mus_name, gn_idx, art_idx, mus_exp, mus_link, mus_is_open) values " +
+                "(@Name, @Genre,  @Artist, @Explain, @Link, @IsOpen)", music);
         }
     }
 }

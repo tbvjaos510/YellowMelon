@@ -10,13 +10,13 @@
     d:DesignWidth="400">
 
     <Grid Height="25">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="15 0">
             <TextBlock VerticalAlignment="Center" Text="{Binding Name}" FontSize="13" />
             <TextBlock VerticalAlignment="Center" x:Name="tbUserType" Text=" 회원님" FontSize="12"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button Content="아티스트로 전환" x:Name="btnChangeArtist" VerticalAlignment="Center" Padding="1" FontSize="10"/>
-            <Button Content="노래 올리기" x:Name="btnUpload" VerticalAlignment="Center" Padding="1" FontSize="10"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="15 0">
+            <Button Content="아티스트로 전환" x:Name="btnChangeArtist" VerticalAlignment="Center" Padding="1" FontSize="10" Click="BtnChangeArtist_Click"/>
+            <Button Content="노래 올리기" x:Name="btnUpload" VerticalAlignment="Center" Padding="1" FontSize="10" Click="BtnUpload_Click"/>
         </StackPanel>
     </Grid>
 </UserControl>

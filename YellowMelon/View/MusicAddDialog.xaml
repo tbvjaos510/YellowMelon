@@ -1,0 +1,43 @@
+﻿<ContentDialog
+    x:Class="YellowMelon.View.MusicAddDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:YellowMelon.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="음악 추가"
+    PrimaryButtonText="확인"
+    SecondaryButtonText="취소"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Margin" Value="0 5" />
+                </Style>
+            </StackPanel.Resources>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="곡 제목" Width="70" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbMusicName" Text="{Binding Name,Mode=TwoWay}" Width="210" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="곡 주소 (Youtube)" Width="130" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbMusicLink" Text="{Binding Link,Mode=TwoWay}" Width="150"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="곡 설명" Width="60" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbMusicExplain" Text="{Binding Explain,Mode=TwoWay}" Width="220"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="곡 장르" Width="60" VerticalAlignment="Center"/>
+                <ComboBox x:Name="cbGenre" Width="220" SelectionChanged="CbGenre_SelectionChanged" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</ContentDialog>

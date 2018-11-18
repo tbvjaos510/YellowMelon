@@ -60,6 +60,8 @@ namespace YellowMelon.View
 
         private void LvPlayList_RightTapped(object sender, RightTappedRoutedEventArgs e)
         {
+            if ((e.OriginalSource as FrameworkElement).DataContext == null)
+                return;
             ListView list = sender as ListView;
             playlistMenuFly.ShowAt(list, e.GetPosition(list));
             selected = ((FrameworkElement)e.OriginalSource).DataContext as ListMusic;
@@ -97,7 +99,8 @@ namespace YellowMelon.View
         private void LvPlayList_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
             currentMusic = lvPlayList.SelectedIndex;
-            requestMusic(this, playListViewModel.playList.PlayList[currentMusic++].FK_Music);
+            if (currentMusic > -1)
+                requestMusic(this, playListViewModel.playList.PlayList[currentMusic++].FK_Music);
         }
 
         private void CbPlayLists_SelectionChanged(object sender, SelectionChangedEventArgs e)

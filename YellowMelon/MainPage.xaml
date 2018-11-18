@@ -18,7 +18,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <View:UserInfoController Grid.Row="0" x:Name="ctrlUser"/>
+            <View:UserInfoController Grid.Row="0" x:Name="ctrlUser" MusicAdded="CtrlUser_MusicAdded"/>
             <View:MusicController Grid.Row="1" x:Name="ctrlMusic" requestNext="CtrlMusic_requestNext" requestPrev="CtrlMusic_requestPrev"/>
             <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>

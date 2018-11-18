@@ -1,0 +1,33 @@
+﻿<ContentDialog
+    x:Class="YellowMelon.View.ArtistAddDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:YellowMelon.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="아티스트로 변경"
+    PrimaryButtonText="확인"
+    SecondaryButtonText="취소"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel.Resources>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Margin" Value="0 5" />
+                </Style>
+            </StackPanel.Resources>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="활동 이름" Width="80" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbMusicName" Text="{Binding NickName,Mode=TwoWay}" Width="200" />
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="자기 소개" Width="80" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbMusicLink" Text="{Binding Explain,Mode=TwoWay}" Width="200"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</ContentDialog>

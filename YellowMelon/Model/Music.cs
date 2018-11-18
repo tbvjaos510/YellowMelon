@@ -52,10 +52,17 @@ namespace YellowMelon.Model
         /// <summary>
         /// 노래 공개 여부
         /// </summary>
-        private bool mus_is_open;
+        private int mus_is_open;
 
 
-        public bool IsOpen { get => mus_is_open; set => mus_is_open = value; }
+        public int IsOpen { get => mus_is_open; set => mus_is_open = value; }
+
+        /// <summary>
+        /// 노래 설명
+        /// </summary>
+        private string mus_exp;
+        public string Explain { get => mus_exp; set => mus_exp = value; }
+
 
         /// <summary>
         /// 노래 링크 (Youtube)

@@ -27,13 +27,15 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width=".1*"/>
                                 <ColumnDefinition Width=".4*"/>
-                                <ColumnDefinition Width=".2*"/>
-                                <ColumnDefinition Width=".2*"/>
+                            <ColumnDefinition Width=".2*"/>
+                            <ColumnDefinition Width=".2*"/>
+                            <ColumnDefinition Width=".2*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="곡번호" Grid.Column="0" HorizontalAlignment="Center"/>
                             <TextBlock Text="곡명" Grid.Column="1" HorizontalAlignment="Center" />
-                            <TextBlock Text="아티스트" Grid.Column="2" HorizontalAlignment="Center" />
-                            <TextBlock Text="좋아요" Grid.Column="3" HorizontalAlignment="Center" />
+                        <TextBlock Text="아티스트" Grid.Column="2" HorizontalAlignment="Center" />
+                        <TextBlock Text="장르" Grid.Column="3" HorizontalAlignment="Center" />
+                        <TextBlock Text="좋아요" Grid.Column="4" HorizontalAlignment="Center" />
                         </Grid>
                     </DataTemplate>
                 </ListView.HeaderTemplate>
@@ -44,16 +46,18 @@
                                 <ColumnDefinition Width=".1*"/>
                                 <ColumnDefinition Width=".4*"/>
                                 <ColumnDefinition Width=".2*"/>
-                                <ColumnDefinition Width=".2*"/>
-                            </Grid.ColumnDefinitions>
+                            <ColumnDefinition Width=".2*"/>
+                            <ColumnDefinition Width=".2*"/>
+                        </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding Index}" Grid.Column="0" 
                                    HorizontalAlignment="Center" FontSize="12"/>
                             <TextBlock Text="{Binding Name}" Grid.Column="1" 
-                                   HorizontalAlignment="Center"  FontSize="12" Tapped="TextBlock_Tapped"/>
+                                   HorizontalAlignment="Center"  FontSize="12" />
                             <TextBlock Text="{Binding FKArtist.NickName}" Grid.Column="2" 
                                    HorizontalAlignment="Center" FontSize="12"/>
-                            <TextBlock Text="{Binding Like}" HorizontalAlignment="Center" Grid.Column="3"  FontSize="12" />
-                        </Grid>
+                        <TextBlock Text="{Binding FKGenre.Name}" HorizontalAlignment="Center" Grid.Column="3"  FontSize="12" />
+                        <TextBlock Text="{Binding Like}" HorizontalAlignment="Center" Grid.Column="4"  FontSize="12" />
+                    </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.Resources>
