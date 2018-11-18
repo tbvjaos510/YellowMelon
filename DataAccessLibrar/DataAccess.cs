@@ -14,7 +14,6 @@ namespace DataAccessLibrary
         {
             InitializeDatabase();
         }
-
         public static void dropAllTable()
         {
             executeQuery("Drop table if exists listmusic_tb");
@@ -103,7 +102,6 @@ namespace DataAccessLibrary
                 "insert into list_tb (u_idx, lst_title) values (NEW.u_idx, 'DEFAULT');\n" +
                 "end;");
         }
-
         public static void InitializeDatabase()
         {
             db.Open();
@@ -181,11 +179,6 @@ namespace DataAccessLibrary
                 Debug.WriteLine(e);
                 return false;
             }
-        }
-
-        public static List<T> Select<T>(string query)
-        {
-            return db.Query<T>(query).AsList();
         }
     }
 }
