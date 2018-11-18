@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VideoLibrary;
-using NAudio.Wave;
 using System.Diagnostics;
 using System.IO;
 using Windows.UI.Xaml.Controls;
@@ -15,10 +14,6 @@ namespace YellowMelon.ViewModel
 {
     public class PlayerViewModel
     {
-        public PlayerViewModel()
-        {
-
-        }
         
         public async void setSourceAsync(string link, MediaPlayer mediaElement)
         {
