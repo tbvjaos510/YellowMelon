@@ -27,7 +27,6 @@ namespace YellowMelon.View
         MediaPlayer mediaPlayer = new MediaPlayer();
         public event EventHandler requestNext;
         public event EventHandler requestPrev;
-        private DispatcherTimer timer = new DispatcherTimer();
         Music music = null;
         PlayerViewModel playerViewModel = new PlayerViewModel();
         bool isPlayed = false;
@@ -47,8 +46,6 @@ namespace YellowMelon.View
             mediaPlayer.SystemMediaTransportControls.PropertyChanged += SystemMediaTransportControls_PropertyChanged;
             PauseBtn.Visibility = Visibility.Collapsed;
             DataContext = mediaPlayer;
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += new EventHandler<object>(Timer_Tick);
         }
 
         private void SystemMediaTransportControls_PropertyChanged(SystemMediaTransportControls sender, SystemMediaTransportControlsPropertyChangedEventArgs args)
@@ -60,7 +57,6 @@ namespace YellowMelon.View
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
             {
-                timer?.Stop();
                 requestNext(this, null);
                 Music_Pause();
             });
@@ -70,13 +66,7 @@ namespace YellowMelon.View
         {
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.High, () =>
             {
-
-                if (timer != null && timer.IsEnabled)
-                    timer.Stop();
                 TotalTime = mediaPlayer.PlaybackSession.NaturalDuration;
-
-            //    tbEnd.Text = TotalTime.ToString(@"mm\:ss");
-                timer.Start();
             });
         }
 
@@ -138,37 +128,6 @@ namespace YellowMelon.View
             Music_Play();
         }
 
-        private void Timer_Tick(object sender, object e)
-        {
-            if (mediaPlayer.PlaybackSession.NaturalDuration.TotalSeconds > 0)
-            {
-                if (TotalTime.TotalSeconds > 0)
-                {
-                 //   tbNow.Text = mediaPlayer.PlaybackSession.Position.ToString(@"mm\:ss");
-                    if (!isDraged)
-                        moveMoused = true;
-                 //       sdrTimer.Value = mediaPlayer.PlaybackSession.Position.TotalSeconds /
-                   //                      TotalTime.TotalSeconds;
-
-                }
-            }
-        }
-
-        private void SdrTimer_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        {
-            if (TotalTime.TotalSeconds > 0)
-            {
-                if (moveMoused)
-                {
-                    moveMoused = false;
-                }
-                else
-                {
-                //    mediaPlayer.PlaybackSession.Position = TimeSpan.FromSeconds(sdrTimer.Value * TotalTime.TotalSeconds);
-                    Timer_Tick(null, null);
-                }
-            }
-        }
 
         private void BtnNext_Click(object sender, RoutedEventArgs e)
         {

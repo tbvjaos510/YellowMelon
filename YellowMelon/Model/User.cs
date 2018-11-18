@@ -10,7 +10,7 @@ namespace YellowMelon.Model
     /// 유저 테이블
     /// Table : User_TB
     /// </summary>
-    public class User
+    public class User : IDBModel
     {
         /// <summary>
         /// 인덱스
