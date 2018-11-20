@@ -1,5 +1,5 @@
 # YellowMelon (참외) 
-<img src="I/melon_color.svg" width="100px">
+<img src="melon_color.svg" width="100px">
 
 사용자가 아티스트가 되어 쉽게 음악을 공유하고 사용자들은 노래를 쉽게 들을 수 있는 UWP 음악 앱 입니다.
 
@@ -41,8 +41,8 @@ DB 설계
 
 > ## 사용자 입장
 
-<img src="Image/_06.png" width=200 style="float:right">
-<img src="Image/_05.png" width=150 style="float:right">
+<img src="Image/_06.png" width=200 align="right">
+<img src="Image/_05.png" width=150 align="right">
 
 ### 재생목록 관리
 - 재생목록 추가를 누르면 재생목록에 추가가 됨
@@ -74,14 +74,14 @@ DB 설계
 - 자신이 마음에 드는 곡에 좋아요를 표시할 수 있다.
 
 ### 아티스트로 변환
-<img src="Image/_10.png" width=28% style="float:right">
+<img src="Image/_10.png" width=28% align="right">
 <img src="Image/_09.png" width=70%>
 
 - 아티스트로 전환 버튼을 누르면 사용자가 아티스트가 될 수 있다.
 
 > ## 아티스트 입장
 ### 노래 등록
-<img src="Image/_11.png" width=28% style="float:right">
+<img src="Image/_11.png" width=28% align="right">
 <img src="Image/_22.png" width=70%>
 
 - 상단에 노래 올리기 버튼을 누르면 자신의 노래를 추가할 수 있다.
@@ -89,7 +89,7 @@ DB 설계
 **아티스트의 기존 기능은 일반 사용자와 같다**
 
 ## 6. 주요 코드 분석
-<img src="Image/_13.png" style="float:right" width=20%>
+<img src="Image/_13.png" align="right" width=20%>
 
 * UWP 앱으로 MVVM 패턴을 사용하였다. ->
 
@@ -130,7 +130,7 @@ Youtube 음악을 플레이 하기 위해 libvideo라는 라이브러리를 사�
 잘못 그렸다)**
 
 MainPage.xaml에 보면 위 사진과 같이 나누어진 부분을 볼 수 있다.
-<img src="Image/_18.png" style="float:right">
+<img src="Image/_18.png" align="right">
 
 * 데이터베이스 사용은 SQLite를 사용하였고 DataAccess 프로젝트를 새로 만들어 참조하였다. ->
 
