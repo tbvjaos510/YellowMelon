@@ -64,8 +64,8 @@ DB 설계
 - 노래의 위치를 Slidebar로 움직일 수 있다.
 
 ### 아티스트 정보
-<img src="Image/_08.png" width=40%>
-<img src="Image/_07.png" width=40%>
+<img src="Image/_08.png" width=50% align=right>
+<img src="Image/_07.png" width=50% align=right>
 
 - 노래 목록에서 노래를 오른쪽 클릭한 뒤, 아티스트 보기를 누르면 아티스트의 정보를 볼 수 있다.
 - 해당 아티스트의 노래와 정보를 볼 수 있다.
@@ -74,15 +74,15 @@ DB 설계
 - 자신이 마음에 드는 곡에 좋아요를 표시할 수 있다.
 
 ### 아티스트로 변환
-<img src="Image/_10.png" width=28% align="right">
-<img src="Image/_09.png" width=70%>
+<img src="Image/_10.png" width=30% align="right">
+<img src="Image/_09.png" width=70% align="right">
 
 - 아티스트로 전환 버튼을 누르면 사용자가 아티스트가 될 수 있다.
 
 > ## 아티스트 입장
 ### 노래 등록
-<img src="Image/_11.png" width=28% align="right">
-<img src="Image/_22.png" width=70%>
+<img src="Image/_11.png" width=30% align="right">
+<img src="Image/_22.png" width=70% align="right">
 
 - 상단에 노래 올리기 버튼을 누르면 자신의 노래를 추가할 수 있다.
 
